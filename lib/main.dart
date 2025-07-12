@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_chatting/core/utils/firebase_options.dart';
+import 'package:just_chatting/features/check_internet/presentation/manager/internet_cubit/internet_cubit.dart';
+import 'package:just_chatting/features/check_internet/presentation/views/no_internet_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,11 +18,23 @@ class JustChatting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Just Chatting',
-      home: Scaffold(
-        body: Center(
-          child: Text('Just Chatting'),
+    return BlocProvider(
+      create: (context) => InternetCubit()..checkInternet(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Just Chatting',
+        home: BlocBuilder<InternetCubit, InternetState>(
+          builder: (context, state) {
+            if (state is InternetNotConnected) {
+              return const NoInternetView();
+            } else {
+              return Scaffold(
+                body: Center(
+                  child: Text('Just Chatting'),
+                ),
+              );
+            }
+          },
         ),
       ),
     );
