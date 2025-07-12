@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "856958122904",
+    "project_id": "just-chatting-dcc8c",
+    "storage_bucket": "just-chatting-dcc8c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856958122904:android:0fa0f16f665be6741ec9ed",
+        "android_client_info": {
+          "package_name": "com.example.just_chatting"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcpPaqvJHsKhAukUb32YbvpYoCi79g0sE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
