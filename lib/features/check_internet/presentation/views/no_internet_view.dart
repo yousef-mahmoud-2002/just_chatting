@@ -6,7 +6,6 @@ class NoInternetView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Center(child: Image.asset('assets/no_internet.png')),
     );
   }
