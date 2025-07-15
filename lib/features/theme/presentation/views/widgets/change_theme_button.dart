@@ -12,6 +12,7 @@ class ChangeThemeButton extends StatelessWidget {
     return IconButton(
       icon: Icon(
         themeMode == ThemeMode.light ? Icons.dark_mode : Icons.light_mode,
+        color: themeMode == ThemeMode.light ? Colors.black : Colors.amber,
       ),
       onPressed: () => context.read<ThemeCubit>().toggleTheme(),
     );

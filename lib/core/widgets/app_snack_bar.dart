@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-loginDialog(context, String content) {
+appSnackBar(context, String content) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       padding: const EdgeInsets.all(6),

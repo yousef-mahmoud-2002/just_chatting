@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_chatting/constants.dart';
-import '../../data/models/user_model.dart';
 import '../manager/auth/auth_cubit.dart';
 import 'widgets/back_to_login_button.dart';
 import 'widgets/custom_text_form_field.dart';
@@ -67,15 +66,11 @@ class RegisterView extends StatelessWidget {
                   RegisterButton(
                     onPressed: () {
                       if (formKey.currentState?.validate() ?? false) {
-                        UserModel userModel = UserModel(
-                          email: emailController.text.trim(),
-                          name: nameController.text.trim(),
-                          profileImage: kDefaultProfilePic,
-                        );
                         BlocProvider.of<AuthCubit>(context).createAccount(
                           context,
-                          userModel,
-                          passwordController.text.trim(),
+                          email: emailController.text.trim(),
+                          name: nameController.text.trim(),
+                          password: passwordController.text.trim(),
                         );
                       }
                     },

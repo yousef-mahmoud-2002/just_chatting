@@ -10,4 +10,5 @@ ThemeData lightTheme = ThemeData(
 ThemeData darkTheme = ThemeData(
   useMaterial3: false,
   brightness: Brightness.dark,
+  primarySwatch: kPrimaryColor,
 );

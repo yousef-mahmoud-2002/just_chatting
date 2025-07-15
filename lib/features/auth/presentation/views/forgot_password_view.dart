@@ -25,7 +25,10 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading: const BackButton()),
+      appBar: AppBar(
+        leading: const BackButton(),
+        elevation: 0,
+      ),
       body: Form(
         autovalidateMode: AutovalidateMode.onUnfocus,
         key: formKey,

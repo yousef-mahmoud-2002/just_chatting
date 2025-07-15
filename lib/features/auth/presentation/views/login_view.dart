@@ -86,8 +86,8 @@ class _LoginViewState extends State<LoginView> {
                           if (formKey.currentState?.validate() ?? false) {
                             BlocProvider.of<AuthCubit>(context).login(
                               context,
-                              passwordController.text.trim(),
-                              emailController.text.trim(),
+                              password: passwordController.text.trim(),
+                              email: emailController.text.trim(),
                             );
                           }
                         },

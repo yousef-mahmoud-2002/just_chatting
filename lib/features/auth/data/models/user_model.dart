@@ -1,19 +1,22 @@
 class UserModel {
+  final String uid;
   final String email;
   final String name;
   final String profileImage;
 
   UserModel({
+    required this.uid,
     required this.email,
     required this.name,
     required this.profileImage,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
+  factory UserModel.fromFirestore(snapshot) {
     return UserModel(
-      email: json['email'],
-      name: json['name'],
-      profileImage: json['profileImage'],
+      uid: snapshot['uid'],
+      email: snapshot['email'],
+      name: snapshot['name'],
+      profileImage: snapshot['profileImage'],
     );
   }
 }
