@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_chatting/core/utils/firebase_options.dart';
 import 'package:just_chatting/features/auth/presentation/manager/auth/auth_cubit.dart';
 import 'package:just_chatting/features/auth/presentation/views/login_view.dart';
+import 'package:just_chatting/features/chat/presentation/manager/chat/chat_cubit.dart';
 import 'package:just_chatting/features/check_internet/presentation/manager/internet_cubit/internet_cubit.dart';
 import 'package:just_chatting/features/check_internet/presentation/views/no_internet_view.dart';
 import 'package:just_chatting/features/theme/presentation/manager/theme/theme_cubit.dart';
@@ -20,6 +21,7 @@ void main() async {
         BlocProvider(create: (_) => ThemeCubit()),
         BlocProvider(create: (_) => InternetCubit()..checkInternet()),
         BlocProvider(create: (_) => AuthCubit()),
+        BlocProvider(create: (_) => ChatCubit()),
       ],
       child: const JustChatting(),
     ),
