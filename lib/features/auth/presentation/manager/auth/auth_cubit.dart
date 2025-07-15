@@ -80,14 +80,36 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
 
-      userId = auth.currentUser!.uid;
+      final user = auth.currentUser;
+      if (user == null) {
+        emit(LoginFailure());
+        if (context.mounted) {
+          appSnackBar(context, 'Something went wrong, please try again later');
+        }
+        return;
+      }
+
+      userId = user.uid;
+
+      final doc = await firestore.collection('users').doc(userId).get();
+      final userData = doc.data();
+      if (userData == null) {
+        emit(LoginFailure());
+        if (context.mounted) {
+          appSnackBar(context, 'failed to get user data');
+        }
+        return;
+      }
+
+      final name = userData['name'] as String;
 
       if (context.mounted) {
         context.read<ChatCubit>().setSenderId(userId);
-        context.read<ChatCubit>().senderName = auth.currentUser!.displayName!;
+        context.read<ChatCubit>().senderName = name;
       }
 
       emit(LoginSuccess());
+
       if (context.mounted) {
         Navigator.pushAndRemoveUntil(
             context, animateRoute(const HomeView()), (_) => false);
